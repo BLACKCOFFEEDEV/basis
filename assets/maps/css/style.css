@@ -16,3 +16,8 @@ body {
     margin: -100px -7% 10px -7%;
     padding-bottom: 85px;
 }
+#map{
+    margin: 100px auto 10px auto;
+    height: 95%;
+    width: 87%;
+}
