@@ -55,3 +55,17 @@ $route['404_override'] = '';
 $route['user/login'] = 'user_login/login/view/login_look';
 $route['sess/auth'] = 'user_login/login/login_user';
 //$route['translate_uri_dashes'] = FALSE;
+
+/*
+| -------------------------------------------------------------------------
+| CUSTOM URI ROUTING
+| -------------------------------------------------------------------------
+| This file lets you re-map URI requests to specific controller functions.
+|
+*/
+// AUTHENTICATION
+$route['auth/sign-in'] = 'auth/signin';
+$route['auth/sign-out'] = 'auth/signin/do_logout';
+$route['auth/sign-in/validate'] = 'auth/signin/do_login';
+$route['auth/forgot-my-password'] = 'auth/signin/forgot_password';
+$route['auth/remind-password'] = 'auth/signin/remind_password';

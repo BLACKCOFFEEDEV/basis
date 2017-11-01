@@ -19,7 +19,7 @@
                     <a class="nav-link" href="contact#">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url();?>user/login" target="_blank">Login</a>
+                    <a class="nav-link" href="<?php echo base_url('auth/sign-in');?>" target="_blank">Login</a>
                 </li>
             </ul>
         </div>
