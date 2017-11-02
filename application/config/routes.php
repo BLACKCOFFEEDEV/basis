@@ -69,3 +69,12 @@ $route['auth/sign-out'] = 'auth/signin/do_logout';
 $route['auth/sign-in/validate'] = 'auth/signin/do_login';
 $route['auth/forgot-my-password'] = 'auth/signin/forgot_password';
 $route['auth/remind-password'] = 'auth/signin/remind_password';
+
+// MEMBER
+$route['member/register/save-member'] = 'member/register/save_member';
+
+// CALENDAR
+$route['calendar/display'] = 'calendar/moment/index';
+
+// HISTORY
+$route['history/display'] = 'history/audit/index';

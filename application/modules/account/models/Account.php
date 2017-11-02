@@ -25,7 +25,7 @@ class Account extends CI_Model
             $this->db->insert($this->table, $object);
             return $this->db->insert_id();
         } else {
-            $this->db->where($this->primary_key, $id)->update($this->table, $object);
+            $this->db->where($this->primary_key, $id)->update($this->account, $object);
             return $id;
         }
     }

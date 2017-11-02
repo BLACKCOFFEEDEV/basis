@@ -6,10 +6,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Secure
 |--------------------------------------------------------------------------
 |
-| URL to your CodeIgniter root. Typically this will be your base URL,
+| If you want to use SSL on your server, just change this configuration
+| to true and you will get all urls to https
 |
 */
 $config['secure_app']     = false;
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL

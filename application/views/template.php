@@ -85,25 +85,32 @@
 
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="<?php echo base_url('assets/face/back/dist/img/user2-160x160.jpg'); ?>" class="user-image" alt="User Image">
+                            <img src="<?php echo base_url('account/profile/image'); ?>" class="user-image" alt="User Image">
                             <span class="hidden-xs"><?php echo $this->aauth->get_user()->email ?></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="user-header">
-                                <img src="<?php echo base_url('assets/face/back/dist/img/user2-160x160.jpg'); ?>" class="img-circle" alt="User Image">
+                                <img src="<?php echo base_url('account/profile/image'); ?>" class="img-circle" alt="User Image">
 
                                 <p>
                                     <?php echo $this->aauth->get_user()->email ?>
-                                    <small>Member since Nov. 2012</small>
+
+                                    <?php if(is_member()): ?>
+                                        <small>Member since <?php echo get_member()->member_since ?></small>
+                                    <?php endif; ?>
+
+                                    <?php if(is_employee()): ?>
+                                        <small>Employee no <?php echo get_employee()->nip ?></small>
+                                    <?php endif; ?>
                                 </p>
                             </li>
 
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    <a href="<?php echo base_url('account/profile');?>" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="<?php echo base_url('user_login/login/user_logout');?>" class="btn btn-default btn-flat">Logout</a>
+                                    <a href="<?php echo base_url('auth/sign-out');?>" class="btn btn-danger btn-flat">Logout</a>
                                 </div>
                             </li>
                         </ul>
@@ -136,13 +143,8 @@
 </div>
 
 <!-- REQUIRED JS SCRIPTS -->
-
-<script src="<?php echo base_url(); ?>assets/face/back/bower_components/fastclick/lib/fastclick.js"></script>
 <script src="<?php echo base_url(); ?>assets/face/back/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/face/back/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/face/back/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 <script src="<?php echo base_url(); ?>assets/face/back/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/face/back/bower_components/Chart.js/Chart.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         //

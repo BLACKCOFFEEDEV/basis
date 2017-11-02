@@ -23,52 +23,76 @@ class Profile extends MY_Controller
         $user = $this->aauth->get_user();
         $account = $this->account->get_account($user->id);
 
-        print_r(  );
-        exit;
         $this->template->title = 'Profile';
 
-        $data = array();
+        $data = array(
+            'account' => $account
+        );
         $this->template->content->view('profile/index', $data);
 
         $this->template->publish();
     }
 
-    public function save()
+    public function image()
     {
-        $this->form_validation->set_rules('name', 'Group Name is required', 'required');
-        $this->form_validation->set_rules('definition', 'Group Definition is required', 'required');
+        $this->load->model('Account', 'account');
 
-        if($this->form_validation->run() == true) {
-            $this->load->model('Group', 'model');
-            $key = $this->input->post('id');
-            $result = false;
-            $object = array(
-                'name' => $this->input->post('name'),
-                'definition' => $this->input->post('definition')
-            );
+        $user = $this->aauth->get_user();
+        $account = $this->account->get_account($user->id);
 
-            if($key != null || $key != '') {
-                $result = $this->model->save($object, $key);
-            }
-            else {
-                $result = $this->model->save($object);
-            }
+        header('Content-Type: image/jpeg');
+        readfile(base_url('assets/uploads/profile/' . $account->image), true);
+    }
 
-            if($result) {
-                $this->session->set_flashdata('success', 'Data has been saved.');
-                $this->session->keep_flashdata('success');
-            }
-            else {
-                $this->session->set_flashdata('error', 'Data not saved, please try again.');
+    public function update()
+    {
+        $this->load->model('Account', 'model');
+        $user = $this->aauth->get_user();
+        $account = $this->model->get_account($user->id);
+
+        $result = false;
+        $object = array();
+
+        if(strlen($_FILES['image']['name']) > 0) {
+            $this->load->library('upload');
+            $file_name = md5($user->id);
+
+            $config['upload_path'] = './assets/uploads/profile/';
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['max_size'] = '2048';
+            $config['overwrite'] = TRUE;
+            $config['file_name'] = $file_name;
+
+            $this->upload->initialize($config);
+
+            if ($this->upload->do_upload('image')) {
+                $upload = $this->upload->data();
+                $object['image'] = $upload['file_name'];
+            }else{
+                $this->session->set_flashdata('error', 'Upload failed, please try again.');
                 $this->session->keep_flashdata('error');
             }
+        }
 
-            redirect('privileges/groups');
+        if(strlen($this->input->post('phone')) > 0) {
+            $object['phone'] = $this->input->post('phone');
+        }
+
+        if(strlen($this->input->post('address')) > 0) {
+            $object['address'] = $this->input->post('address');
+        }
+
+        $result = $this->model->save($object, $account->id);
+
+        if($result) {
+            $this->session->set_flashdata('success', 'Data has been saved.');
+            $this->session->keep_flashdata('success');
         }
         else {
             $this->session->set_flashdata('error', 'Data not saved, please try again.');
             $this->session->keep_flashdata('error');
-            redirect('privileges/groups');
         }
+
+        redirect('account/profile');
     }
 }
