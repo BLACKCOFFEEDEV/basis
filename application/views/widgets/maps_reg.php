@@ -2,15 +2,23 @@
 <div id=maps_container>
     <div id="map-canvas" class="fck-map" style=" box-shadow: 8px 8px 8px #888888;"></div>
 </div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApHNWWzhT1JLH4rmcYR9SCjl1LO_yoMm0&libraries=places,drawing,geometry&.js&callback=initMap" async defer></script>
 <script>
-    function initAutocomplete() {
+    var map = null;
+    var geocoder = null;
+    var mark = [];
 
-        //Map Options
-        var map = new google.maps.Map(document.getElementById('map-canvas'), {
-            center: {
-                lat: -6.181908,
-                lng: 106.828249
-            },
+    function initMap() {
+
+        //used to store polygon path
+        var result;
+        var infoWindow;
+        var poly;
+        var i;
+        geocoder = new google.maps.Geocoder();
+        //set map to upstate south carolina
+        var mapOptions = {
+            center: new google.maps.LatLng(-6.181908, 106.828249),
             zoom: 11,
             disableDefaultUI: false,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -19,170 +27,85 @@
             mapTypeControlOptions: {
                 position: google.maps.ControlPosition.LEFT_BOTTOM
             }
-        });
-        console.log();
-        // Create the search box and link it to the UI element.
-        var input = document.getElementById('pac-input');
-        var searchBox = new google.maps.places.SearchBox(input);
-        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+        };
 
-        // Bias the SearchBox results towards current map's viewport.
-        map.addListener('bounds_changed', function () {
-            searchBox.setBounds(map.getBounds());
-        });
+        // clear any input text
+        sqmeters.value = "";
+        /*sqmiles.value = "";
+        sqfeet.value = "";*/
+        acres.value = "";
+        geoMet.value = "";
 
-        var markers = [];
-        // Listen for the event fired when the user selects a prediction and retrieve
-        // more details for that place.
-        searchBox.addListener('places_changed', function () {
-            var places = searchBox.getPlaces();
+        //setup map
+        map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
 
-            if (places.length == 0) {
-                return;
+        codeAddress();
+
+        //used to draw polygon on map
+        var drawingManager = new google.maps.drawing.DrawingManager({
+            //drawingMode: google.maps.drawing.OverlayType.MARKER,
+            drawingControl: true,
+            drawingControlOptions: {
+                position: google.maps.ControlPosition.LEFT_TOP,
+                drawingModes: [
+                    google.maps.drawing.OverlayType.POLYGON
+                ]
+            },
+
+            polygonOptions: {
+                fillOpacity: 0.5,
+                strokeWeight: 1,
+                editable: true
             }
+        });
 
-            // Clear out the old markers.
-            markers.forEach(function (marker) {
-                marker.setMap(null);
-            });
-            markers = [];
-
-            // For each place, get the icon, name and location.
+        //when polygon closes the event grabs the polygon path and calculates the area
+        google.maps.event.addListener(drawingManager, 'polygoncomplete', function(polygon) { 
+            
+            result = google.maps.geometry.spherical.computeArea(polygon.getPath());
+            //displays the area in textboxes
+            setResults();
+            
+            var data = enCode(poly, false);
+            var polygonBounds = [];
             var bounds = new google.maps.LatLngBounds();
-            places.forEach(function (place) {
-                if (!place.geometry) {
-                    console.log("Returned place contains no geometry");
-                    return;
-                }
-                var icon = {
-                    url: 'https://png.icons8.com/marker/color/34/000000',
-                    size: new google.maps.Size(71, 71),
-                    origin: new google.maps.Point(0, 0),
-                    anchor: new google.maps.Point(17, 34),
-                    scaledSize: new google.maps.Size(25, 25)
-                };
+            polygonBounds = polygon.getPath();
 
-                // Create a marker for each place.
-                markers.push(new google.maps.Marker({
-                    map: map,
-                    icon: icon,
-                    title: place.name,
-                    position: place.geometry.location
-                }));
-
-                if (place.geometry.viewport) {
-                    // Only geocodes have viewport.
-                    bounds.union(place.geometry.viewport);
-                } else {
-                    bounds.extend(place.geometry.location);
-                }
+            //adds event for when editing polygon
+            google.maps.event.addListener(polygon.getPath(), 'set_at', function() {
+                // complete functions
+                result = google.maps.geometry.spherical.computeArea(polygon.getPath());
+                setResults();
             });
-            map.fitBounds(bounds);
-        });
-
-
-        /*var drawingManager = new google.maps.drawing.DrawingManager({
-         drawingMode: google.maps.drawing.OverlayType.MARKER,
-         drawingControl: true,
-         drawingControlOptions: {
-         position: google.maps.ControlPosition.LEFT_TOP,
-         drawingModes: ['polygon']
-         },
-         polygonOptions: {
-         fillColor: '#993800',
-         fillOpacity: 0.5,
-         strokeWeight: 2,
-         clickable: true,
-         editable: true,
-         zIndex: 1
-         }
-         });*/
-
-        var shapes = [],
-            selected_shape = null,
-            drawman = new google.maps.drawing.DrawingManager({
-                drawingMode: google.maps.drawing.OverlayType.null,
-                drawingControl: true,
-                drawingControlOptions: {
-                    position: google.maps.ControlPosition.LEFT_TOP,
-                    drawingModes: ['polygon'],
-                    map: map
-                },
-                polygonOptions: {
-                    fillColor: '#993800',
-                    fillOpacity: 0.5,
-                    strokeWeight: 2,
-                    clickable: true,
-                    editable: true,
-                    zIndex: 1
-                }
-            }),
-            byId = function (s) {
-                return document.getElementById(s)
-            },
-            clearSelection = function () {
-                if (selected_shape) {
-                    selected_shape.set((selected_shape.type ===
-                        google.maps.drawing.OverlayType.MARKER
-                    ) ? 'draggable' : 'editable', false);
-                    selected_shape = null;
-                }
-            },
-            setSelection = function (shape) {
-                clearSelection();
-                selected_shape = shape;
-
-                selected_shape.set((selected_shape.type ===
-                    google.maps.drawing.OverlayType.MARKER
-                ) ? 'draggable' : 'editable', true);
-
-            },
-            clearShapes = function () {
-                for (var i = 0; i < shapes.length; ++i) {
-                    shapes[i].setMap(null);
-                }
-                shapes = [];
-            };
-
-
-        google.maps.event.addListener(drawman, 'overlaycomplete', function (event) {
-            var shape = event.overlay;
-            shape.type = event.type;
-            google.maps.event.addListener(shape, 'click', function () {
-                setSelection(this);
+            
+            //adds event for when inserting a new point when editing
+            google.maps.event.addListener(polygon.getPath(), 'insert_at', function() {
+                // complete functions
+                result = google.maps.geometry.spherical.computeArea(polygon.getPath());
+                setResults();
             });
-            setSelection(shape);
-            shapes.push(shape);
         });
 
-        /*google.maps.event.addListener(drawingManager, 'polygoncomplete', function(polygon) {
-         var radius = polygon.getPaths();
-         console.log(radius);
-         });*/
+        //cconverts area to dimensions and displays
+        function setResults() {
+            sqmeters.value = formatNumber(result);
+            /*sqmiles.value = formatNumber(result * 3.86102e-7);
+            sqfeet.value = formatNumber(result * 10.7639);*/
+            acres.value = formatNumber(result * 0.000247105);
+            geoMet.value = JSON.stringify(result);
+        }
 
-        google.maps.event.addListener(map, 'click', clearSelection);
-        google.maps.event.addDomListener(byId('clear_shapes'), 'click', clearShapes);
-        google.maps.event.addListener(drawman, 'overlaycomplete', function (e) {
-            var data = IO.IN(shapes, false);
-            byId('data').value = JSON.stringify(data);
-            //var luas = google.maps.geometry.spherical.computeArea(drawman.shape.getPath());
-            //byId('luas').value = JSON.stringify(luas);
-        });
-        /*google.maps.event.addDomListener(drawman, 'click', function() {
-         if (this.shapes) {
-         for (var i = 0; i < this.shapes.length; ++i) {
-         this.shapes[i].setMap(null);
-         }
-         }
-         this.shapes = IO.OUT(JSON.parse(byId('data').value), map);
-         });*/
-        drawman.setMap(map);
+        //console.log(result);
 
-    }
-
-    var IO = {
-        //returns array with storable google.maps.Overlay-definitions
-        IN: function (arr, //array with google.maps.Overlays
+        function formatNumber(num) {
+            var p = num.toFixed(2).split(".");
+            return p[0].split("").reverse().reduce(function(acc, num, i, orig) {
+                return num + (i && !(i % 3) ? "," : "") + acc;
+            }, "") + "." + p[1];
+        }
+        
+        function enCode (arr, //array with google.maps.Overlays
                       encoded //boolean indicating whether pathes should be stored encoded
         ) {
             var shapes = [],
@@ -220,120 +143,70 @@
             }
 
             return shapes;
-        },
-        //returns array with google.maps.Overlays
-        OUT: function (arr, //array containg the stored shape-definitions
-                       map //map where to draw the shapes
-        ) {
-            var shapes = [],
-                goo = google.maps,
-                map = map || null,
-                shape, tmp;
-
-            for (var i = 0; i < arr.length; i++) {
-                shape = arr[i];
-
-                switch (shape.type) {
-                    case 'CIRCLE':
-                        tmp = new goo.Circle({
-                            radius: Number(shape.radius),
-                            center: this.pp_.apply(this, shape.geometry)
-                        });
-                        break;
-                    case 'MARKER':
-                        tmp = new goo.Marker({
-                            position: this.pp_.apply(this, shape.geometry)
-                        });
-                        break;
-                    case 'RECTANGLE':
-                        tmp = new goo.Rectangle({
-                            bounds: this.bb_.apply(this, shape.geometry)
-                        });
-                        break;
-                    case 'POLYLINE':
-                        tmp = new goo.Polyline({
-                            path: this.ll_(shape.geometry)
-                        });
-                        break;
-                    case 'POLYGON':
-                        tmp = new goo.Polygon({
-                            paths: this.mm_(shape.geometry)
-                        });
-
-                        break;
-                }
-                tmp.setValues({
-                    map: map,
-                    id: shape.id
-                })
-                shapes.push(tmp);
-            }
-            return shapes;
-        },
-        l_: function (path, e) {
-            path = (path.getArray) ? path.getArray() : path;
-            if (e) {
-                return google.maps.geometry.encoding.encodePath(path);
-            } else {
-                var r = [];
-                for (var i = 0; i < path.length; ++i) {
-                    r.push(this.p_(path[i]));
-                }
-                return r;
-            }
-        },
-        ll_: function (path) {
-            if (typeof path === 'string') {
-                return google.maps.geometry.encoding.decodePath(path);
-            } else {
-                var r = [];
-                for (var i = 0; i < path.length; ++i) {
-                    r.push(this.pp_.apply(this, path[i]));
-                }
-                return r;
-            }
-        },
-
-        m_: function (paths, e) {
-            var r = [];
-            paths = (paths.getArray) ? paths.getArray() : paths;
-            for (var i = 0; i < paths.length; ++i) {
-                r.push(this.l_(paths[i], e));
-            }
-            return r;
-        },
-        mm_: function (paths) {
-            var r = [];
-            for (var i = 0; i < paths.length; ++i) {
-                r.push(this.ll_.call(this, paths[i]));
-
-            }
-            return r;
-        },
-        p_: function (latLng) {
-            return ([latLng.lat(), latLng.lng()]);
-        },
-        pp_: function (lat, lng) {
-            return new google.maps.LatLng(lat, lng);
-        },
-        b_: function (bounds) {
-            return ([this.p_(bounds.getSouthWest()),
-                this.p_(bounds.getNorthEast())
-            ]);
-        },
-        bb_: function (sw, ne) {
-            return new google.maps.LatLngBounds(this.pp_.apply(this, sw),
-                this.pp_.apply(this, ne));
-        },
-        t_: function (s) {
-            var t = ['CIRCLE', 'MARKER', 'RECTANGLE', 'POLYLINE', 'POLYGON'];
-            for (var i = 0; i < t.length; ++i) {
-                if (s === google.maps.drawing.OverlayType[t[i]]) {
-                    return t[i];
-                }
-            }
         }
 
+        drawingManager.setMap(map);
+    }
+
+    function codeAddress() {
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+            searchBox.setBounds(map.getBounds());
+        });
+
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+            var places = searchBox.getPlaces();
+
+            if (places.length == 0) {
+                return;
+            }
+
+            // Clear out the old markers.
+            markers.forEach(function(marker) {
+                marker.setMap(null);
+            });
+            markers = [];
+
+            // For each place, get the icon, name and location.
+            var bounds = new google.maps.LatLngBounds();
+            places.forEach(function(place) {
+                if (!place.geometry) {
+                    console.log("Returned place contains no geometry");
+                    return;
+                }
+                var icon = {
+                    url: 'https://png.icons8.com/marker/color/34/000000',
+                    size: new google.maps.Size(71, 71),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(17, 34),
+                    scaledSize: new google.maps.Size(25, 25)
+                };
+
+                // Create a marker for each place.
+                markers.push(new google.maps.Marker({
+                    map: map,
+                    icon: icon,
+                    title: place.name,
+                    position: place.geometry.location
+                }));
+
+                if (place.geometry.viewport) {
+                    // Only geocodes have viewport.
+                    bounds.union(place.geometry.viewport);
+                } else {
+                    bounds.extend(place.geometry.location);
+                }
+            });
+            map.fitBounds(bounds);
+        });
     }
 
 </script>

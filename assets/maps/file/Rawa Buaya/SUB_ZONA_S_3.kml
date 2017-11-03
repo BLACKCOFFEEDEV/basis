@@ -1,0 +1,965 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>SUB_ZONA_S_3.kml</name>
+	<Style id="PolyStyle170">
+		<LabelStyle>
+			<color>00000000</color>
+			<scale>0</scale>
+		</LabelStyle>
+		<LineStyle>
+			<color>ff828282</color>
+			<width>0.4</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>ff45458a</color>
+		</PolyStyle>
+	</Style>
+	<Folder id="FeatureLayer132">
+		<name>SUB_ZONA_S_3</name>
+		<Snippet maxLines="0"></Snippet>
+		<Placemark id="ID_1320000">
+			<name>JB</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>JB</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>FID</td>
+
+<td>1</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>AREA</td>
+
+<td>1814.757675</td>
+
+</tr>
+
+<tr>
+
+<td>ID_WILAYAH</td>
+
+<td>JB</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>KECAMATAN</td>
+
+<td>CENGKARENG</td>
+
+</tr>
+
+<tr>
+
+<td>ID_KEC</td>
+
+<td>CK</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>KELURAHAN</td>
+
+<td>RAWA BUAYA</td>
+
+</tr>
+
+<tr>
+
+<td>ID_KEL</td>
+
+<td>RBY</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>KODE_BLOK</td>
+
+<td>01</td>
+
+</tr>
+
+<tr>
+
+<td>SUB_BLOK</td>
+
+<td>023</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>SUB_ZONA</td>
+
+<td>S.3</td>
+
+</tr>
+
+<tr>
+
+<td>CD_TPZ</td>
+
+<td></td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>ID_SUBBLOK</td>
+
+<td>023.S.3</td>
+
+</tr>
+
+<tr>
+
+<td>PSL</td>
+
+<td>P</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>]]></description>
+			<styleUrl>#PolyStyle170</styleUrl>
+			<MultiGeometry>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								106.7422133409941,-6.15725897677094,0 106.7422461305004,-6.156813724571939,0 106.7419150847045,-6.15677818197105,0 106.7418898268369,-6.157233449611912,0 106.7422133409941,-6.15725897677094,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="ID_1320001">
+			<name>JB</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>JB</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>FID</td>
+
+<td>2</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>AREA</td>
+
+<td>876.286232</td>
+
+</tr>
+
+<tr>
+
+<td>ID_WILAYAH</td>
+
+<td>JB</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>KECAMATAN</td>
+
+<td>CENGKARENG</td>
+
+</tr>
+
+<tr>
+
+<td>ID_KEC</td>
+
+<td>CK</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>KELURAHAN</td>
+
+<td>RAWA BUAYA</td>
+
+</tr>
+
+<tr>
+
+<td>ID_KEL</td>
+
+<td>RBY</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>KODE_BLOK</td>
+
+<td>03</td>
+
+</tr>
+
+<tr>
+
+<td>SUB_BLOK</td>
+
+<td>024</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>SUB_ZONA</td>
+
+<td>S.3</td>
+
+</tr>
+
+<tr>
+
+<td>CD_TPZ</td>
+
+<td></td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>ID_SUBBLOK</td>
+
+<td>024.S.3</td>
+
+</tr>
+
+<tr>
+
+<td>PSL</td>
+
+<td>P</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>]]></description>
+			<styleUrl>#PolyStyle170</styleUrl>
+			<MultiGeometry>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								106.7378327518894,-6.161758194661406,0 106.7378543033328,-6.161755395924429,0 106.7380191137845,-6.161733975178688,0 106.7379759426689,-6.161405520292147,0 106.7377696827735,-6.161432325668661,0 106.7377403681116,-6.161436112721225,0 106.7377685339975,-6.161560131229662,0 106.7377917154602,-6.161628986271015,0 106.7378327518894,-6.161758194661406,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="ID_1320002">
+			<name>JB</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>JB</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>FID</td>
+
+<td>3</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>AREA</td>
+
+<td>4773.009232</td>
+
+</tr>
+
+<tr>
+
+<td>ID_WILAYAH</td>
+
+<td>JB</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>KECAMATAN</td>
+
+<td>CENGKARENG</td>
+
+</tr>
+
+<tr>
+
+<td>ID_KEC</td>
+
+<td>CK</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>KELURAHAN</td>
+
+<td>RAWA BUAYA</td>
+
+</tr>
+
+<tr>
+
+<td>ID_KEL</td>
+
+<td>RBY</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>KODE_BLOK</td>
+
+<td>03</td>
+
+</tr>
+
+<tr>
+
+<td>SUB_BLOK</td>
+
+<td>037</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>SUB_ZONA</td>
+
+<td>S.3</td>
+
+</tr>
+
+<tr>
+
+<td>CD_TPZ</td>
+
+<td></td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>ID_SUBBLOK</td>
+
+<td>037.S.3</td>
+
+</tr>
+
+<tr>
+
+<td>PSL</td>
+
+<td>P</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>]]></description>
+			<styleUrl>#PolyStyle170</styleUrl>
+			<MultiGeometry>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								106.7371296706917,-6.162550223842978,0 106.7371376107269,-6.162602963139772,0 106.7372141840317,-6.163026102093947,0 106.73722743905,-6.163101650262482,0 106.7372630157611,-6.163095838807452,0 106.7378588909911,-6.162998410631865,0 106.7379137926291,-6.162989458794979,0 106.7378388836735,-6.162513995445793,0 106.7378348451096,-6.162494361307586,0 106.7378266372722,-6.162439327047987,0 106.7377631258453,-6.162455428520985,0 106.737481060718,-6.162497351131974,0 106.7372947693499,-6.162525084770994,0 106.7371786354159,-6.162540174409486,0 106.7371296706917,-6.162550223842978,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="ID_1320003">
+			<name>JB</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>JB</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>FID</td>
+
+<td>4</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>AREA</td>
+
+<td>686.968313</td>
+
+</tr>
+
+<tr>
+
+<td>ID_WILAYAH</td>
+
+<td>JB</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>KECAMATAN</td>
+
+<td>CENGKARENG</td>
+
+</tr>
+
+<tr>
+
+<td>ID_KEC</td>
+
+<td>CK</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>KELURAHAN</td>
+
+<td>RAWA BUAYA</td>
+
+</tr>
+
+<tr>
+
+<td>ID_KEL</td>
+
+<td>RBY</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>KODE_BLOK</td>
+
+<td>02</td>
+
+</tr>
+
+<tr>
+
+<td>SUB_BLOK</td>
+
+<td>025</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>SUB_ZONA</td>
+
+<td>S.3</td>
+
+</tr>
+
+<tr>
+
+<td>CD_TPZ</td>
+
+<td>b</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>ID_SUBBLOK</td>
+
+<td>025.S.3.b</td>
+
+</tr>
+
+<tr>
+
+<td>PSL</td>
+
+<td>P</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>]]></description>
+			<styleUrl>#PolyStyle170</styleUrl>
+			<MultiGeometry>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								106.7293938028705,-6.164292302622705,0 106.7294221785398,-6.164099339427064,0 106.7294279267933,-6.164059895752907,0 106.7293942971202,-6.164055395463206,0 106.7292250097023,-6.164032615106764,0 106.7292114646669,-6.164034738584725,0 106.729202081597,-6.164038837581782,0 106.7291934363439,-6.16404736478188,0 106.7291823606614,-6.164060061140068,0 106.7291810538278,-6.164073357170511,0 106.7291643395383,-6.164213837256479,0 106.7291587146718,-6.164261417643326,0 106.7291963160734,-6.164266357610997,0 106.7293938028705,-6.164292302622705,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="ID_1320004">
+			<name>JB</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>JB</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>FID</td>
+
+<td>5</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>AREA</td>
+
+<td>5727.381707</td>
+
+</tr>
+
+<tr>
+
+<td>ID_WILAYAH</td>
+
+<td>JB</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>KECAMATAN</td>
+
+<td>CENGKARENG</td>
+
+</tr>
+
+<tr>
+
+<td>ID_KEC</td>
+
+<td>CK</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>KELURAHAN</td>
+
+<td>RAWA BUAYA</td>
+
+</tr>
+
+<tr>
+
+<td>ID_KEL</td>
+
+<td>RBY</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>KODE_BLOK</td>
+
+<td>04</td>
+
+</tr>
+
+<tr>
+
+<td>SUB_BLOK</td>
+
+<td>013</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>SUB_ZONA</td>
+
+<td>S.3</td>
+
+</tr>
+
+<tr>
+
+<td>CD_TPZ</td>
+
+<td></td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>ID_SUBBLOK</td>
+
+<td>013.S.3</td>
+
+</tr>
+
+<tr>
+
+<td>PSL</td>
+
+<td>P</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>]]></description>
+			<styleUrl>#PolyStyle170</styleUrl>
+			<MultiGeometry>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								106.7412613122739,-6.16456425914142,0 106.7412641213187,-6.164584232778821,0 106.7413131520565,-6.164825680968435,0 106.7413468142681,-6.165007860070624,0 106.7413706905878,-6.165154445572724,0 106.7413728444791,-6.165166959802475,0 106.7413761831271,-6.165191057631825,0 106.7415060793438,-6.165170098438457,0 106.7416264482531,-6.165150907701771,0 106.7420784954543,-6.165082326992469,0 106.7420861369765,-6.165070456260624,0 106.7420872534473,-6.165053001872361,0 106.7420237621468,-6.164617016003955,0 106.742005003673,-6.164488226622451,0 106.7420009889095,-6.164475941444057,0 106.7419920827954,-6.164459875255022,0 106.7419835773615,-6.164455744017891,0 106.7414904238014,-6.164525262378338,0 106.7414111273426,-6.164532936674284,0 106.741284246797,-6.164549265530721,0 106.7412732393272,-6.164554365633443,0 106.7412613122739,-6.16456425914142,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="ID_1320005">
+			<name>JB</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>JB</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>FID</td>
+
+<td>6</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>AREA</td>
+
+<td>698.603236</td>
+
+</tr>
+
+<tr>
+
+<td>ID_WILAYAH</td>
+
+<td>JB</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>KECAMATAN</td>
+
+<td>CENGKARENG</td>
+
+</tr>
+
+<tr>
+
+<td>ID_KEC</td>
+
+<td>CK</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>KELURAHAN</td>
+
+<td>RAWA BUAYA</td>
+
+</tr>
+
+<tr>
+
+<td>ID_KEL</td>
+
+<td>RBY</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>KODE_BLOK</td>
+
+<td>02</td>
+
+</tr>
+
+<tr>
+
+<td>SUB_BLOK</td>
+
+<td>024</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>SUB_ZONA</td>
+
+<td>S.3</td>
+
+</tr>
+
+<tr>
+
+<td>CD_TPZ</td>
+
+<td></td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>ID_SUBBLOK</td>
+
+<td>024.S.3</td>
+
+</tr>
+
+<tr>
+
+<td>PSL</td>
+
+<td>P</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>]]></description>
+			<styleUrl>#PolyStyle170</styleUrl>
+			<MultiGeometry>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								106.7347338847506,-6.16607689707107,0 106.7347118158269,-6.166070566982637,0 106.734655120155,-6.166054305203494,0 106.7346533450553,-6.166053781166811,0 106.7346396142029,-6.166085989637521,0 106.7345927352328,-6.166195953652105,0 106.7345917453117,-6.166198126911883,0 106.7345882996611,-6.166210244419166,0 106.7345810246632,-6.166235867034097,0 106.7345654896812,-6.16629080431311,0 106.7346876430139,-6.166329202880694,0 106.7347204224607,-6.166339507004396,0 106.7347542361506,-6.166350136236664,0 106.7347559495423,-6.166350675926549,0 106.7347760744853,-6.166358809297494,0 106.734776339131,-6.166358910627423,0 106.7348089983115,-6.166371415464495,0 106.7348097961685,-6.166369869778426,0 106.7348112074293,-6.166367032876965,0 106.7348125568589,-6.166364174101163,0 106.7348138620884,-6.166361288978481,0 106.7348151231324,-6.166358381923999,0 106.7348163223522,-6.166355455202752,0 106.7348174773864,-6.166352506549744,0 106.7348185794194,-6.16634953820121,0 106.734819628451,-6.166346550157164,0 106.7348206244957,-6.166343546832676,0 106.734821576362,-6.166340523783985,0 106.7348224664186,-6.166337485483579,0 106.7348233034954,-6.16633443411029,0 106.7348240875781,-6.166331365249015,0 106.7348248186883,-6.166328285522433,0 106.7348254968187,-6.166325192722934,0 106.7348261219766,-6.166322089058126,0 106.734826694162,-6.166318974527959,0 106.7348272133747,-6.166315849132418,0 106.7348276708065,-6.166312717315395,0 106.7348280752729,-6.166309576840572,0 106.7348284267812,-6.166306429915475,0 106.7348287253383,-6.166303278747662,0 106.7348289621146,-6.166300121158316,0 106.7348291621747,-6.166296958294814,0 106.7348254891871,-6.166269750450786,0 106.7348234370465,-6.16625456908332,0 106.7348209871529,-6.166236450741524,0 106.7348195673251,-6.166220366628525,0 106.7348177007544,-6.166202559861575,0 106.7348110740413,-6.166164333161246,0 106.7348065397836,-6.166131976186616,0 106.734803473336,-6.166106036240253,0 106.7347984120562,-6.166077115952805,0 106.7347452651626,-6.166080097562363,0 106.7347338847506,-6.16607689707107,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</MultiGeometry>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>

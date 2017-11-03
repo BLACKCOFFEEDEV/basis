@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>SUB_ZONA_K_2.kml</name>
+	<Style id="PolyStyle90">
+		<LabelStyle>
+			<color>00000000</color>
+			<scale>0</scale>
+		</LabelStyle>
+		<LineStyle>
+			<color>ff828282</color>
+			<width>0.4</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>ffa80084</color>
+		</PolyStyle>
+	</Style>
+	<Folder id="FeatureLayer124">
+		<name>SUB_ZONA_K_2</name>
+		<Snippet maxLines="0"></Snippet>
+		<Placemark id="ID_1240000">
+			<name>JB</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>JB</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>FID</td>
+
+<td>1</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>AREA</td>
+
+<td>3883.698457</td>
+
+</tr>
+
+<tr>
+
+<td>ID_WILAYAH</td>
+
+<td>JB</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>KECAMATAN</td>
+
+<td>CENGKARENG</td>
+
+</tr>
+
+<tr>
+
+<td>ID_KEC</td>
+
+<td>CK</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>KELURAHAN</td>
+
+<td>RAWA BUAYA</td>
+
+</tr>
+
+<tr>
+
+<td>ID_KEL</td>
+
+<td>RBY</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>KODE_BLOK</td>
+
+<td>02</td>
+
+</tr>
+
+<tr>
+
+<td>SUB_BLOK</td>
+
+<td>021</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>SUB_ZONA</td>
+
+<td>K.2</td>
+
+</tr>
+
+<tr>
+
+<td>CD_TPZ</td>
+
+<td></td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>ID_SUBBLOK</td>
+
+<td>021.K.2</td>
+
+</tr>
+
+<tr>
+
+<td>PSL</td>
+
+<td>P</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>]]></description>
+			<styleUrl>#PolyStyle90</styleUrl>
+			<MultiGeometry>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								106.7335603499806,-6.162028074742257,0 106.7340328185983,-6.161940668383757,0 106.7340256158428,-6.161909746141544,0 106.7340104855187,-6.161844769268711,0 106.7339937418632,-6.161780172927457,0 106.7339476310336,-6.161602644675804,0 106.7339441549688,-6.1615890926903,0 106.7339293096551,-6.161579286389068,0 106.7339104929273,-6.161571841852945,0 106.7338883523607,-6.161570558405562,0 106.7334506279546,-6.161652456302909,0 106.733278890762,-6.161684662294404,0 106.7331472668102,-6.161965760299237,0 106.7330813759631,-6.162106486164604,0 106.7335603499806,-6.162028074742257,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</MultiGeometry>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>

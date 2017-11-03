@@ -131,7 +131,7 @@
         <div class="pull-right hidden-xs">
             QC By DONNY PTSP - DKI
         </div>
-        <strong>Customized &copy; 2017 <a href="#">ONIP-BLACKCOFFEEDEV™</a>.</strong> All rights reserved.
+        <strong>Customized &copy; 2017 <a href="#">TEAM-BLACKCOFFEEDEV™</a>.</strong> All rights reserved.
     </footer>
 </div>
 
