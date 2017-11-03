@@ -5,13 +5,13 @@
  * @author		Syahril Hermana (syahril.hermana@gmail.com)
  */
 
-class Navigations extends CI_Model
+class Surattanah extends CI_Model
 {
-    var $table = 'aauth_navigations';
+    var $table = 'assets_legality';
     var $primary_key = 'id';
-    var $column_order = array(null, 'orders', 'label');
-    var $column_search = array('label');
-    var $order = array('orders' => 'asc');
+    var $column_order = array(null, 'name');
+    var $column_search = array('name');
+    var $order = array('id' => 'asc');
     var $deleted = array('deleted_at' => DateTime::ATOM);
 
     /**
@@ -129,57 +129,6 @@ class Navigations extends CI_Model
      * @param int offset
      * @return array object
      */
-    public function get_list_no_paging($where, $value = FALSE) {
-        if (!$value) {
-            $value = $where;
-            $where = $this->primary_key;
-        }
-
-        $object = $this->db->where($where, $value)->get($this->table)->result();
-        return $object;
-    }
-
-    /**
-     * Get a list of data with pagination options
-     *
-     * @param int limit
-     * @param int offset
-     * @return array object
-     */
-    public function get_list_parent($limit = FALSE, $offset = FALSE) {
-        $this->_get_field_query();
-
-        if ($limit) {
-            return $this->db->where("parent is null")->limit($limit, $offset)->get()->result();
-        } else {
-            return $this->db->where("parent is null")->get()->result();
-        }
-    }
-
-    /**
-     * Get a list of data without pagination options
-     *
-     * @param int limit
-     * @param int offset
-     * @return array object
-     */
-    public function get_list_childs($where, $value = FALSE) {
-        if (!$value) {
-            $value = $where;
-            $where = $this->primary_key;
-        }
-
-        $object = $this->db->where($where, $value)->get($this->table)->result();
-        return $object;
-    }
-
-    /**
-     * Get a list of data with pagination options
-     *
-     * @param int limit
-     * @param int offset
-     * @return array object
-     */
     public function get_list($limit = FALSE, $offset = FALSE) {
         $this->_get_field_query();
 
@@ -239,21 +188,5 @@ class Navigations extends CI_Model
     {
         $this->db->from($this->table);
         return $this->db->count_all_results();
-    }
-
-    public function count_all_parent()
-    {
-        $this->db->from($this->table);
-        $this->db->where("parent is null");
-        return $this->db->count_all_results();
-    }
-
-    public function is_parent($where, $value = FALSE) {
-        if (!$value) {
-            $value = $where;
-            $where = $this->primary_key;
-        }
-
-        return $this->db->where($where, $value)->count_all_results($this->table);
     }
 }

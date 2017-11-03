@@ -62,6 +62,7 @@ class Permission extends CI_Model
     private function _get_field_group_query()
     {
 
+        $this->db->distinct("aauth_groups.id");
         $this->db->select("aauth_groups.*");
         $this->db->from("aauth_groups");
         $this->db->join("aauth_navigation_to_group", "group_id = aauth_groups.id", "left");

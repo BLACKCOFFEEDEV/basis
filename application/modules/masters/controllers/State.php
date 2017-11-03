@@ -1,10 +1,10 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 /**
- * Navigation Controller
+ * Groups Controller
  * Created by Syahril Hermana
  */
 
-class Menu extends MY_Controller
+class State extends MY_Controller
 {
     function __construct(){
         parent::__construct();
@@ -15,10 +15,10 @@ class Menu extends MY_Controller
 
     public function index()
     {
-        $this->template->title = 'Modules';
+        $this->template->title = 'State';
 
         $data = array();
-        $this->template->content->view('menu/index', $data);
+        $this->template->content->view('state/index', $data);
 
         $this->template->publish();
     }
@@ -29,8 +29,8 @@ class Menu extends MY_Controller
         $start = (!empty($_POST['start'])) ? $_POST['start'] : 0;
         $draw  = (!empty($_POST['draw'])) ? $_POST['draw'] : 10;
 
-        $this->load->model('Generals', 'model');
-        $list = $this->model->get_list_parent($length, $start);
+        $this->load->model('Kecamatan', 'model');
+        $list = $this->model->get_list($length, $start);
 
         $data = array();
         $no = $start;
@@ -38,31 +38,18 @@ class Menu extends MY_Controller
             $no++;
             $row = array();
             $row[] = $no;
-            $row[] = $object->label;
-            $row[] = $object->link;
-            $row[] = 'As Parent';
-            $row[] = '<a href="'.base_url("privileges/menu/form/").$object->id.'" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> Update</a>
+            $row[] = $object->name;
+            $row[] = get_custom_field("master_kota", "name", "id", $object->kota_id);
+            $row[] = get_custom_field("master_provinsi", "name", "id", get_custom_field("master_kota", "provinsi_id", "id", $object->kota_id));
+            $row[] = '<a href="'.base_url("masters/state/form/").$object->id.'" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> Update</a>
 					<button type="button" id="delete" class="btn btn-default btn-sm btn-danger" data-toggle="modal" data-target="#confirmation" onclick="set_value('.$object->id.');"><i class="fa fa-trash"></i> Delete</button>';
 
             $data[] = $row;
-
-            $childs = $this->model->get_list_childs("parent", $object->id);
-            foreach ($childs as $child) {
-                $row2 = array();
-                $row2[] = '';
-                $row2[] = $child->label;
-                $row2[] = $child->link;
-                $row2[] = $object->label;
-                $row2[] = '<a href="'.base_url("privileges/menu/form/").$child->id.'" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> Update</a>
-					<button type="button" id="delete" class="btn btn-default btn-sm btn-danger" data-toggle="modal" data-target="#confirmation" onclick="set_value('.$child->id.');"><i class="fa fa-trash"></i> Delete</button>';
-
-                $data[] = $row2;
-            }
         }
 
         $output = array(
             "draw" => $draw,
-            "recordsTotal" => $this->model->count_all_parent(),
+            "recordsTotal" => $this->model->count_all(),
             "recordsFiltered" => $this->model->count_filtered(),
             "data" => $data,
         );
@@ -73,23 +60,24 @@ class Menu extends MY_Controller
 
     public function form($key=false)
     {
-        $this->load->model('Generals', 'model');
+        $this->load->model('Kota', 'kota');
         if($key) {
-            $this->template->title = 'Navigation Update';
+            $this->template->title = 'State Update';
 
+            $this->load->model('Kecamatan', 'model');
             $data = array(
                 "object" => $this->model->get($key),
-                "parents" => $this->model->get_list_parent()
+                "list_kota" => $this->kota->get_list()
             );
-            $this->template->content->view('menu/form', $data);
+            $this->template->content->view('state/form', $data);
         }
         else {
-            $this->template->title = 'Create New Navigation';
+            $this->template->title = 'Create New State';
 
             $data = array(
-                "parents" => $this->model->get_list_parent()
+                "list_kota" => $this->kota->get_list()
             );
-            $this->template->content->view('menu/form', $data);
+            $this->template->content->view('state/form', $data);
         }
 
         $this->template->publish();
@@ -97,22 +85,17 @@ class Menu extends MY_Controller
 
     public function save()
     {
-        $this->form_validation->set_rules('label', 'Navigation Label is required', 'required');
-        $this->form_validation->set_rules('link', 'Navigation Link is required', 'required');
+        $this->form_validation->set_rules('name', 'State Name is required', 'required');
+        $this->form_validation->set_rules('city', 'City is required', 'required');
 
         if($this->form_validation->run() == true) {
-            $this->load->model('Generals', 'model');
+            $this->load->model('Kecamatan', 'model');
             $key = $this->input->post('id');
             $result = false;
             $object = array(
-                'label' => $this->input->post('label'),
-                'link' => $this->input->post('link'),
-                'icon' => $this->input->post('icon')
+                'name' => $this->input->post('name'),
+                'kota_id' => $this->input->post('city')
             );
-
-            if(strlen($this->input->post('parent')) > 0) {
-                $object['parent'] = $this->input->post('parent');
-            }
 
             if($key != null || $key != '') {
                 $result = $this->model->save($object, $key);
@@ -130,12 +113,12 @@ class Menu extends MY_Controller
                 $this->session->keep_flashdata('error');
             }
 
-            redirect('privileges/menu');
+            redirect('masters/state');
         }
         else {
             $this->session->set_flashdata('error', 'Data not saved, please try again.');
             $this->session->keep_flashdata('error');
-            redirect('privileges/menu');
+            redirect('masters/state');
         }
     }
 
@@ -144,7 +127,7 @@ class Menu extends MY_Controller
         if ($this->input->is_ajax_request()) {
             $key = $this->input->post('id');
 
-            $this->load->model("Navigations", "model");
+            $this->load->model("Kecamatan", "model");
             $this->model->delete($key);
 
             return true;
