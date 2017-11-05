@@ -1,25 +1,16 @@
-<iframe src="https://www.google.com/maps/d/embed?mid=1OdE_5cEvSNz7SpaQa5iBJMmRpD0" width="100%" height="450px"></iframe>
-<!--<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+<!--<iframe src="https://www.google.com/maps/d/embed?mid=1OdE_5cEvSNz7SpaQa5iBJMmRpD0" width="100%" height="450px"></iframe>-->
+<input id="pac-input" class="controls" type="text" placeholder="Search Box">
 <div id="map-canvas" style=" box-shadow: 8px 8px 8px #888888;"></div>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApHNWWzhT1JLH4rmcYR9SCjl1LO_yoMm0&libraries=places,geometry&.js&callback=initMap" async defer></script>-->
 
 <script>
-/*    var map = null;
-    var src = 'https://developers.google.com/maps/documentation/javascript/examples/kml/westcampus.kml';
-    var geocoder = null;
-    var mark = [];
+    function initAutocomplete() {
 
-    function initMap() {
-
-        //used to store polygon path
-        var result;
-        var infoWindow;
-        var poly;
-        var i;
-        geocoder = new google.maps.Geocoder();
-        //set map to upstate south carolina
-        var mapOptions = {
-            center: new google.maps.LatLng(-6.181908, 106.828249),
+        //Map Options
+        var map = new google.maps.Map(document.getElementById('map-canvas'), {
+            center: {
+                lat: -6.181908,
+                lng: 106.828249
+            },
             zoom: 11,
             disableDefaultUI: false,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -28,20 +19,15 @@
             mapTypeControlOptions: {
                 position: google.maps.ControlPosition.LEFT_BOTTOM
             }
-        };
-
-        //setup map
-        map = new google.maps.Map(document.getElementById('map-canvas'),
-            mapOptions);
-
-        kmlLoader();
-
-        codeAddress();
-
-        map.setMap(map);
-    }
-
-    function codeAddress() {
+        });
+        
+        
+        var ctaLayer = new google.maps.KmlLayer({
+            url: 'http://localhost:8888/basis-it/assets/maps/file/cikarangbaratr4.kmz',
+            suppressInfoWindows: true,
+            map: map
+        });
+        console.log(ctaLayer);
         // Create the search box and link it to the UI element.
         var input = document.getElementById('pac-input');
         var searchBox = new google.maps.places.SearchBox(input);
@@ -100,16 +86,10 @@
             });
             map.fitBounds(bounds);
         });
+
+
+        //console.log(ctaLayer);
     }
 
-    function kmlLoader() {
-        var ctaLayer = new google.maps.KmlLayer({
-            url: 'http://localhost:8888/basis-it/assets/maps/file/kec_gambir.kmz'
-        });
-    }
-
-
-    function reloadform() {
-        location.reload();
-    }*/
 </script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApHNWWzhT1JLH4rmcYR9SCjl1LO_yoMm0&libraries=places,drawing,geometry&.js&callback=initAutocomplete"></script>

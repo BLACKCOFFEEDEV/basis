@@ -19,7 +19,7 @@
                 <div class="box box-success">
                     <div class="box-header with-border">
                         <h3 class="box-title">Digitasi Luas Bangunan</h3>
-                        <input type="button" style="float:right;" id="txtClear" onclick="initMap('map','geocoder','marker')" value="Reset"/>
+                        <input type="button" style="float:right;" id="clear_shapes" value="Reset"/>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
