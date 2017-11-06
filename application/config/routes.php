@@ -49,8 +49,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'nav_public/guest/view';
-$route['(:any)'] = 'nav_public/guest/view/$1';
+$route['default_controller'] = 'public/guest/view';
+$route['(:any)'] = 'public/guest/view/$1';
 $route['404_override'] = '';
 $route['user/login'] = 'user_login/login/view/login_look';
 $route['sess/auth'] = 'user_login/login/login_user';
@@ -69,3 +69,12 @@ $route['auth/sign-out'] = 'auth/signin/do_logout';
 $route['auth/sign-in/validate'] = 'auth/signin/do_login';
 $route['auth/forgot-my-password'] = 'auth/signin/forgot_password';
 $route['auth/remind-password'] = 'auth/signin/remind_password';
+
+// MEMBER
+$route['member/register/save-member'] = 'member/register/save_member';
+
+// CALENDAR
+$route['calendar/display'] = 'calendar/moment/index';
+
+// HISTORY
+$route['history/display'] = 'history/audit/index';
