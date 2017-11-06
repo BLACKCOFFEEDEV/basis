@@ -23,6 +23,7 @@ class Register extends MY_Controller
         $this->template->publish();
     }
 
+    // MEMBERS
     public function get_list_member()
     {
         $length = (!empty($_POST['length'])) ? $_POST['length'] : 10;
@@ -43,45 +44,8 @@ class Register extends MY_Controller
             $row[] = $object->address;
             $row[] = $object->phone;
             $row[] = $object->member_until;
-            $row[] = '<a href="'.base_url("privileges/groups/form/").$object->id.'" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> Update</a>
-					<button type="button" id="delete" class="btn btn-default btn-sm btn-danger" data-toggle="modal" data-target="#confirmation" onclick="set_value('.$object->id.');"><i class="fa fa-trash"></i> Delete</button>';
-
-            $data[] = $row;
-        }
-
-        $output = array(
-            "draw" => $draw,
-            "recordsTotal" => $this->model->count_member_all(),
-            "recordsFiltered" => $this->model->count_member_filtered(),
-            "data" => $data,
-        );
-
-        if ($this->input->is_ajax_request())
-            echo json_encode($output);
-    }
-
-    public function get_list_employee()
-    {
-        $length = (!empty($_POST['length'])) ? $_POST['length'] : 10;
-        $start = (!empty($_POST['start'])) ? $_POST['start'] : 0;
-        $draw  = (!empty($_POST['draw'])) ? $_POST['draw'] : 10;
-
-        $this->load->model('Members', 'model');
-        $list = $this->model->get_list_employee($length, $start);
-
-        $data = array();
-        $no = $start;
-        foreach ($list as $object) {
-            $no++;
-            $row = array();
-            $row[] = $no;
-            $row[] = $object->first_name." ".$object->last_name;
-            $row[] = $object->nip;
-            $row[] = $object->address;
-            $row[] = $object->phone;
-            $row[] = get_custom_field("master_office", "name", "id", $object->office);
-            $row[] = '<a href="'.base_url("privileges/groups/form/").$object->id.'" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> Update</a>
-					<button type="button" id="delete" class="btn btn-default btn-sm btn-danger" data-toggle="modal" data-target="#confirmation" onclick="set_value('.$object->id.');"><i class="fa fa-trash"></i> Delete</button>';
+            $row[] = '<a href="'.base_url("member/register/member/").$object->id.'" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> Update</a>
+					<button type="button" id="delete" class="btn btn-default btn-sm btn-danger" data-toggle="modal" data-target="#confirmation" onclick="set_value('.$object->id.');"><i class="fa fa-ban"></i> Ban User</button>';
 
             $data[] = $row;
         }
@@ -106,9 +70,10 @@ class Register extends MY_Controller
 
             $data = array(
                 "object" => $this->model->get_member($key),
+                "user" => $this->aauth->get_user($this->model->get_member($key)->user_id),
                 "list_negara" => $this->model->get_list_country()
             );
-            $this->template->content->view('register/member-form', $data);
+            $this->template->content->view('register/member-form-update', $data);
         }
         else {
             $this->template->title = 'Create New Member';
@@ -117,27 +82,6 @@ class Register extends MY_Controller
                 "list_negara" => $this->model->get_list_country()
             );
             $this->template->content->view('register/member-form', $data);
-        }
-
-        $this->template->publish();
-    }
-
-    public function employee($key=false)
-    {
-        if($key) {
-            $this->template->title = 'Group Update';
-
-            $this->load->model('Group', 'model');
-            $data = array(
-                "object" => $this->model->get($key)
-            );
-            $this->template->content->view('groups/form', $data);
-        }
-        else {
-            $this->template->title = 'Create New Group';
-
-            $data = array();
-            $this->template->content->view('groups/form', $data);
         }
 
         $this->template->publish();
@@ -199,7 +143,7 @@ class Register extends MY_Controller
                     'ktp_address' => $this->input->post('member-address'),
                     'member_until' => date('Y-m-d', strtotime($date)),
                     'member_since' => date('Y-m-d')
-            );
+                );
 
                 $this->model->save_member($member);
                 $result = true;
@@ -232,21 +176,69 @@ class Register extends MY_Controller
         }
     }
 
-    public function delete()
+
+    // EMPLOYEE
+    public function get_list_employee()
     {
-        if ($this->input->is_ajax_request()) {
-            $key = $this->input->post('id');
+        $length = (!empty($_POST['length'])) ? $_POST['length'] : 10;
+        $start = (!empty($_POST['start'])) ? $_POST['start'] : 0;
+        $draw  = (!empty($_POST['draw'])) ? $_POST['draw'] : 10;
 
-            $this->load->model("Group", "model");
-            $this->model->delete($key);
+        $this->load->model('Members', 'model');
+        $list = $this->model->get_list_employee($length, $start);
 
-            return true;
+        $data = array();
+        $no = $start;
+        foreach ($list as $object) {
+            $no++;
+            $row = array();
+            $row[] = $no;
+            $row[] = $object->first_name." ".$object->last_name;
+            $row[] = $object->nip;
+            $row[] = $object->address;
+            $row[] = $object->phone;
+            $row[] = get_custom_field("master_office", "name", "id", $object->office);
+            $row[] = '<a href="'.base_url("privileges/groups/form/").$object->id.'" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> Update</a>
+					<button type="button" id="delete" class="btn btn-default btn-sm btn-danger" data-toggle="modal" data-target="#confirmation" onclick="set_value('.$object->id.');"><i class="fa fa-trash"></i> Delete</button>';
+
+            $data[] = $row;
         }
-        else {
-            return false;
-        }
+
+        $output = array(
+            "draw" => $draw,
+            "recordsTotal" => $this->model->count_member_all(),
+            "recordsFiltered" => $this->model->count_member_filtered(),
+            "data" => $data,
+        );
+
+        if ($this->input->is_ajax_request())
+            echo json_encode($output);
     }
 
+    public function employee($key=false)
+    {
+        if($key) {
+            $this->template->title = 'Group Update';
+
+            $this->load->model('Group', 'model');
+            $data = array(
+                "object" => $this->model->get($key)
+            );
+            $this->template->content->view('groups/form', $data);
+        }
+        else {
+            $this->template->title = 'Create New Group';
+
+            $data = array();
+            $this->template->content->view('groups/form', $data);
+        }
+
+        $this->template->publish();
+    }
+
+
+
+    // PRIVATE METHOD
     private function _generate_unique_pin($token)
     {
         $this->load->model("Members", "model");
@@ -257,7 +249,6 @@ class Register extends MY_Controller
 
         return $pin;
     }
-
     private function _randomize_token($length)
     {
         $token = "";
@@ -273,9 +264,7 @@ class Register extends MY_Controller
         return $token;
     }
 
-    /**
-     * XXX
-     */
+    // AJAX DEPENDENCY SELECT
     public function province()
     {
         if ($this->input->is_ajax_request()) {
@@ -293,7 +282,6 @@ class Register extends MY_Controller
             show_404();
         }
     }
-
     public function city()
     {
         if ($this->input->is_ajax_request()) {
@@ -311,7 +299,6 @@ class Register extends MY_Controller
             show_404();
         }
     }
-
     public function state()
     {
         if ($this->input->is_ajax_request()) {
@@ -329,7 +316,6 @@ class Register extends MY_Controller
             show_404();
         }
     }
-
     public function district()
     {
         if ($this->input->is_ajax_request()) {

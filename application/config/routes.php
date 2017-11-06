@@ -72,6 +72,7 @@ $route['auth/remind-password'] = 'auth/signin/remind_password';
 
 // MEMBER
 $route['member/register/save-member'] = 'member/register/save_member';
+$route['member/register/update-member'] = 'member/register/update_member';
 
 // CALENDAR
 $route['calendar/display'] = 'calendar/moment/index';

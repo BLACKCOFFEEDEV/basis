@@ -186,7 +186,7 @@ class Members extends CI_Model
 
     public function get_member($where, $value = FALSE) {
         $this->db->from($this->table);
-        $this->db->join("aauth_employee", "aauth_employee.account_id = aauth_accounts.id", "right");
+        $this->db->join("aauth_member", "aauth_member.account_id = aauth_accounts.id", "right");
 
         if (!$value) {
             $value = $where;

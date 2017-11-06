@@ -99,7 +99,7 @@
                 <h4 class="modal-title">Confirmation</h4>
             </div>
             <div class="modal-body">
-                <p>Are you sure you want to delete these item?</p>
+                <p>Are you sure you want to ban this user?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" onclick="confirmation()" data-dismiss="modal" class="btn btn-danger pull-left">Yes, Delete it</button>

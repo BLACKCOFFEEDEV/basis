@@ -21,6 +21,7 @@ class Generals extends CI_Model
     {
 
         $this->db->from($this->table);
+        $this->db->join("aauth_navigation_to_group", "navigation_id = id", "left");
 
         $i = 0;
 
@@ -54,6 +55,29 @@ class Generals extends CI_Model
             $order = $this->order;
             $this->db->order_by(key($order), $order[key($order)]);
         }
+    }
+
+    private function _get_permission_query($session)
+    {
+        $this->db->select("aauth_user_to_group.group_id");
+        $this->db->from("aauth_user_to_group");
+        $object = $this->db->where("user_id", $session->id)->get()->result();
+        $array = array();
+        foreach ($object as $row) {
+            $array[] = $row->group_id;
+        }
+
+        return $array;
+    }
+
+    private function _get_groups_query()
+    {
+        $session = $this->aauth->get_user();
+        $permission = $this->_get_permission_query($session);
+
+        $this->db->from($this->table);
+        if(count($permission) > 0)
+            $this->db->where_in("id", $permission);
     }
 
     /**
@@ -148,6 +172,7 @@ class Generals extends CI_Model
      */
     public function get_list_parent($limit = FALSE, $offset = FALSE) {
         $this->_get_field_query();
+        $this->_get_groups_query();
 
         if ($limit) {
             return $this->db->where("parent is null")->limit($limit, $offset)->get()->result();

@@ -40,7 +40,7 @@ class Signin extends MY_Controller
         $this->form_validation->set_rules('password', 'Password is required', 'required');
 
         if($this->form_validation->run() == true) {
-            if ($this->aauth->login(mysqli_real_escape_string($this->input->post('username')), mysqli_real_escape_string($this->input->post('password')))) {
+            if ($this->aauth->login($this->input->post('username'), $this->input->post('password'))) {
                 $this->session->set_flashdata('success', 'Welcome back ');
                 redirect('account/profile');
             }

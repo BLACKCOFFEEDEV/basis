@@ -24,6 +24,21 @@ class Example extends MY_Controller
         echo '4e4cdff9436d4b9797eeb35d6965e73bd0bd9d5dc939ab2c190a179cf8df960d';
     }
 
+    public function email() {
+        $this->load->library('email');
+        $this->email->clear();
+        $this->email->from("mail.bogcamp@gmail.com", "no-replay@gmail.com");
+        $this->email->to("syahril.hermana@gmail.com");
+        $this->email->subject("subject");
+        $this->email->message("test ajah");
+
+        if($this->email->send()) {
+            echo "Email send";
+        } else {
+            return $this->email->print_debugger();
+        }
+    }
+
     function debug(){
 
         echo "<pre>";
