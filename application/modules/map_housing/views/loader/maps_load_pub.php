@@ -3,6 +3,9 @@
 <div id="map-canvas" style=" box-shadow: 8px 8px 8px #888888;"></div>
 
 <script>
+    var map;
+    //var src = 'http://localhost:8888/basis-it/assets/maps/file/cikarangbaratr4.kml';
+
     function initAutocomplete() {
 
         //Map Options
@@ -20,14 +23,13 @@
                 position: google.maps.ControlPosition.LEFT_BOTTOM
             }
         });
-        
-        
-        var ctaLayer = new google.maps.KmlLayer({
-            url: 'http://localhost:8888/basis-it/assets/maps/file/cikarangbaratr4.kmz',
+
+
+        /*var ctaLayer = new google.maps.KmlLayer({
+            url: 'https://drive.google.com/open?id=12FqFPXaZoqruSg182GmhBU5rS38dTLIh',
             suppressInfoWindows: true,
             map: map
-        });
-        console.log(ctaLayer);
+        });*/
         // Create the search box and link it to the UI element.
         var input = document.getElementById('pac-input');
         var searchBox = new google.maps.places.SearchBox(input);
@@ -87,8 +89,18 @@
             map.fitBounds(bounds);
         });
 
-
-        //console.log(ctaLayer);
+        var layer = new google.maps.FusionTablesLayer({
+            query: {
+                select: 'Jakarta\'',
+                from: "1nglRHF_nexiAjSYOqjvSBD6iNQdMAq6i207HsKpR",
+                where: ""
+            },
+            options: {
+                styleId: 2,
+                templateId: 2
+            }
+        });
+        layer.setMap(map);
     }
 
 </script>
