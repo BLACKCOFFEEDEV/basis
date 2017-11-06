@@ -29,7 +29,7 @@ class Menu extends MY_Controller
         $start = (!empty($_POST['start'])) ? $_POST['start'] : 0;
         $draw  = (!empty($_POST['draw'])) ? $_POST['draw'] : 10;
 
-        $this->load->model('Navigations', 'model');
+        $this->load->model('Generals', 'model');
         $list = $this->model->get_list_parent($length, $start);
 
         $data = array();
@@ -73,7 +73,7 @@ class Menu extends MY_Controller
 
     public function form($key=false)
     {
-        $this->load->model('Navigations', 'model');
+        $this->load->model('Generals', 'model');
         if($key) {
             $this->template->title = 'Navigation Update';
 
@@ -101,15 +101,18 @@ class Menu extends MY_Controller
         $this->form_validation->set_rules('link', 'Navigation Link is required', 'required');
 
         if($this->form_validation->run() == true) {
-            $this->load->model('Navigations', 'model');
+            $this->load->model('Generals', 'model');
             $key = $this->input->post('id');
             $result = false;
             $object = array(
                 'label' => $this->input->post('label'),
                 'link' => $this->input->post('link'),
-                'icon' => $this->input->post('icon'),
-                'parent' => $this->input->post('parent')
+                'icon' => $this->input->post('icon')
             );
+
+            if(strlen($this->input->post('parent')) > 0) {
+                $object['parent'] = $this->input->post('parent');
+            }
 
             if($key != null || $key != '') {
                 $result = $this->model->save($object, $key);

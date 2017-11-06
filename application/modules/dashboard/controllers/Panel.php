@@ -7,7 +7,6 @@ class Panel extends MY_Controller {
             $this->load->helper('url');
             $this->load->library('session');
             $this->load->model('user_login/login_mod');
-            $this->load->model('data_member/data_member_mod');
     }
     
     public function view($page = 'dashboard'){

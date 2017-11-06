@@ -73,7 +73,7 @@ class Permissions extends MY_Controller
             $this->template->title = 'Permission Update';
 
             $this->load->model('Permission', 'model');
-            $this->load->model('Navigations', 'nav');
+            $this->load->model('Generals', 'nav');
             $data = array(
                 "group" => $key,
                 "navigations" => $this->nav->get_list()

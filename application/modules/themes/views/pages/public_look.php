@@ -6,13 +6,10 @@
 </head>
 
 <body>
-    <?php $this->load->view('section/public/pub_header');?>
-
-        <!-- Page Content -->
-        <?php echo $content_get;?>
-            <!-- End Content -->
-
-            <?php $this->load->view('section/public/pub_core');?>
+    <!-- Page Content -->
+    <?php echo $content_get;?>
+        <!-- End Content -->
+        <?php $this->load->view('section/public/pub_core');?>
 </body>
 
 </html>
